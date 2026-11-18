@@ -15,6 +15,8 @@ for path in args.configs:
     cfg = models.load_model_cfg(path)
     ctx = ctx or models.build_context(cfg)
     fn = models.build_target_fn(cfg, ctx)
+    step = max(1, int(cfg["trading"]["rebalance_days"]) // int(data.CFG["trading"]["rebalance_days"]))   # 2-month rebalance = every 2nd monthly date
+    dates = ctx.dates[::step]
     LS = data._use_lseg(None)
     if LS: cfg["tag"] = "lseg:" + cfg["tag"]
     out = Path("results") / (("lseg_" if LS else "") + cfg["stage"]); out.mkdir(parents=True, exist_ok=True)
@@ -23,13 +25,13 @@ for path in args.configs:
     ov = cfg.get("overlay", {})
     if ov.get("enabled"):      # Layer 4: pass 1 = unlevered strategy (0 bps) -> exposure schedule -> pass 2 = scaled run
         base_fn = fn
-        u, *_ = backtest.run_backtest(ctx.rets, ctx.dates, base_fn, ctx.tbill, cost_bps=0)
+        u, *_ = backtest.run_backtest(ctx.rets, dates, base_fn, ctx.tbill, cost_bps=0)
         tgt = overlay.target_vol(ctx.bench, ov["target_calib_end"])
-        expo = overlay.exposure_schedule(u, ctx.dates, tgt, ov["vol_window"], ov["min_change"])
+        expo = overlay.exposure_schedule(u, dates, tgt, ov["vol_window"], ov["min_change"])
         fn = lambda d, w: base_fn(d, w) * expo[d]
         print(f"[L4] sigma_target (benchmark vol through {ov['target_calib_end']}) = {tgt:.4f}")
     for c in args.costs:
-        r, sw, to, _ = backtest.run_backtest(ctx.rets, ctx.dates, fn, ctx.tbill, cost_bps=c)
+        r, sw, to, _ = backtest.run_backtest(ctx.rets, dates, fn, ctx.tbill, cost_bps=c)
         backtest.log_trial(cfg["tag"], {"config": path, "name": cfg["name"]}, metrics.perf(r, ctx.tbill, ctx.bench, sw), c)
         for pn, (a, b) in PER.items():
             rows.append({"model": cfg["name"], "cost_bps": c, "period": pn, **metrics.perf(r.loc[a:b], ctx.tbill, ctx.bench, sw),

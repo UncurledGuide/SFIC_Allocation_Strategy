@@ -59,3 +59,66 @@ future success. It exists only to show how much of the baseline's result depends
 ## Trial count
 `results/trials_log.csv` holds **16** distinct trial tags (each distinct model/variant run counts once; costs are not separate trials).
 The Deflated Sharpe Ratio must add the original search (288 weightings x 6 portfolio sizes = 1,728 trials) to this number.
+
+<!-- STAGE4-LSEG:start -->
+## Stage 4 (LSEG point-in-time data, 2002-2026, 0 bps): three pre-registered candidates
+A = live-rule baseline (15 names: 10 by return t-200..t-20, 5 by price / prior 252-day max close, equal weight), B = A + L3, C = B + L4. Data: LSEG, delisted names included (99.8% of index members priced). All rows below come from `scripts/run_stage4_stats.py`.
+
+| Candidate | Sharpe (95% bootstrap CI) | CAGR | Max DD (95% CI) | Deflated Sharpe |
+|:--|:--|--:|:--|--:|
+| A: live baseline | 0.71 (0.32 to 1.11) | 20.1% | -63.1% (-80.9% to -38.3%) | 0.86 |
+| B: A + L3 | 0.69 (0.33 to 1.06) | 21.5% | -63.6% (-82.9% to -43.2%) | 0.85 |
+| C: B + L4 | 0.64 (0.29 to 1.01) | 13.4% | -39.5% (-60.4% to -28.3%) | 0.78 |
+
+Deflated Sharpe uses N = **1761** trials = 33 distinct tags in `trials_log.csv` + 1,728 (the original 288 x 6 search). Under the null the expected best Sharpe of N trials is 0.49 (the dispersion of trial Sharpes, 0.14, is estimated from our logged trials; see CAVEATS 13).
+
+### Paired block bootstrap (10,000 resamples, 63-day (3-month) circular blocks, seed 42)
+| Difference | Point estimate | 95% CI | CI includes 0? |
+|:--|--:|:--|:--|
+| Sharpe diff B - A | -0.016 | -0.133 to +0.088 | yes |
+| Sharpe diff C - A | -0.064 | -0.246 to +0.112 | yes |
+| Sharpe diff C - B | -0.049 | -0.173 to +0.083 | yes |
+| MaxDD diff C - A | +23.6% | -0.8% to +32.5% | yes |
+| MaxDD diff C - B | +24.0% | +6.9% to +33.3% | no |
+
+### Pre-set Layer 4 rule: stay if Max DD is -49% or better AND Sharpe falls by <= 0.05 vs B
+- Max DD of C = -39.5% (threshold -49.0%): **pass**.
+- Sharpe fall C vs B = 0.0489 (limit 0.05): **pass**, with a margin of only 0.0011.
+- **Point-estimate verdict: PASS.** The 95% bootstrap CI for the Sharpe difference C - B is -0.173 to +0.083, which **includes 0**: the data cannot tell whether L4 costs Sharpe, so the pass is not statistically distinguishable from a fail.
+
+### Max drawdown dates
+| Candidate | Peak | Trough | Recovery | Max DD |
+|:--|:--|:--|:--|--:|
+| A: live baseline | 2008-06-23 | 2009-03-03 | 2013-08-05 | -63.1% |
+| B: A + L3 | 2008-06-23 | 2009-03-06 | 2013-12-09 | -63.6% |
+| C: B + L4 | 2002-01-04 | 2002-07-23 | 2004-01-20 | -39.5% |
+
+C's worst drawdown falls in 2002-2003, inside the first 126 days when L4 has no history and is fully invested (w = 1). From 2008 on, C is far shallower than A and B (see the crash windows).
+
+### Crash windows (cumulative return)
+| Model | 2002 (dot-com tail) | 2008-09 to 2009-03 | 2009-03 to 2009-05 (momentum crash) | 2020-02 to 2020-04 | 2022 |
+|---|---|---|---|---|---|
+| A: live baseline | -32.8% | -49.6% | 3.3% | -4.9% | -18.3% |
+| B: A + L3 | -35.2% | -49.5% | 3.2% | -6.8% | -6.9% |
+| C: B + L4 | -36.6% | -21.2% | 1.0% | -8.6% | -0.9% |
+| Benchmark | -23.4% | -30.4% | 22.8% | -6.9% | -16.3% |
+
+### How often L4 is invested less than 100%
+L4 held less than 100% in stocks at **97.0%** of the 299 monthly rebalances (97.0% of days); mean exposure 0.63, minimum 0.16, below 50% at 26.4% of rebalances. Because the strategy's volatility sits well above the 16% target, L4 is close to a permanent partial cash holding, not a crash switch.
+
+### Robustness (B and C only; 0 bps)
+| model | variant | Sharpe IS | Sharpe OOS | Sharpe Full | CAGR | MaxDD | avg_swaps | max_swaps_qtr |
+|---|---|---|---|---|---|---|---|---|
+| B | base (n=15, buffer 25, monthly) | 0.48 | 0.89 | 0.70 | 21.7% | -63.6% | 5.3 | 18.0 |
+| B | buffer 30 | 0.47 | 0.86 | 0.68 | 20.8% | -64.6% | 5.0 | 18.0 |
+| B | size 10 | 0.55 | 0.85 | 0.71 | 24.5% | -62.9% | 3.2 | 17.0 |
+| B | size 20 | 0.44 | 0.82 | 0.64 | 18.4% | -62.2% | 6.0 | 18.0 |
+| B | 2-month rebalance | 0.31 | 0.78 | 0.56 | 16.3% | -65.0% | 5.9 | 12.0 |
+| C | base (n=15, buffer 25, monthly) | 0.52 | 0.78 | 0.65 | 13.5% | -39.5% | 5.3 | 18.0 |
+| C | buffer 30 | 0.52 | 0.77 | 0.65 | 13.6% | -39.3% | 5.0 | 18.0 |
+| C | size 10 | 0.56 | 0.68 | 0.62 | 13.4% | -38.9% | 3.2 | 17.0 |
+| C | size 20 | 0.47 | 0.71 | 0.59 | 11.9% | -39.6% | 6.0 | 18.0 |
+| C | 2-month rebalance | 0.40 | 0.73 | 0.57 | 11.9% | -41.4% | 5.9 | 12.0 |
+
+Parameters not varied in each row are held at the base values (buffer exit rank 25, max 6 swaps per rebalance, 15 names unless stated); L3 parameters were not rescaled for the size variants.
+<!-- STAGE4-LSEG:end -->

@@ -1,0 +1,12 @@
+# Robustness (Stage 4): C (L3+L4), variant n10
+name: rob_C_n10
+tag: "rob:C n10"
+stage: robustness
+selection: {type: baseline_two_list, n_stocks: 10, mom_share: 0.70, mom_signal: mom_live, high_signal: near52_live}
+sector_cap: null
+quality_filter: false
+weighting: equal
+weight_cap: null
+buffer: {enabled: true, exit_rank: 25, max_swaps: 6}
+overlay: {enabled: true}
+

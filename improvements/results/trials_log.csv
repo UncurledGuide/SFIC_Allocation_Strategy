@@ -30,7 +30,6 @@ timestamp,tag,cost_bps,params,cfg_hash,CAGR,Vol,Sharpe,Sortino,MaxDD,avg_swaps,m
 2026-11-18T08:57:59,lseg:diag:2b Base+L3,0.0,"{""config"": ""configs/2b.yaml"", ""name"": ""2b_baseline_L3""}",fc44809a,0.22138,0.31988,0.72899,1.06026,-0.56362,5.5906,6.0,18.0
 2026-11-18T08:58:08,lseg:diag:4b Base+L2+L3 (fixed),0.0,"{""config"": ""configs/4b.yaml"", ""name"": ""4b_baseline_L2_L3_fixed""}",fc44809a,0.20127,0.2567,0.77452,1.10524,-0.55419,5.65101,6.0,18.0
 2026-11-18T10:37:15,lseg:diag:Baseline,0.0,"{""config"": ""configs/baseline.yaml"", ""name"": ""baseline""}",fc44809a,0.20445,0.26951,0.76054,1.07285,-0.54464,8.36577,12.0,32.0
-2026-11-18T10:37:27,lseg:live:live_base,0.0,"{""config"": ""configs/live_base.yaml"", ""name"": ""live_base""}",fc44809a,0.20255,0.29528,0.71363,1.00174,-0.63139,8.25503,12.0,33.0
 2026-11-18T10:37:35,lseg:live:live_base,5.0,"{""config"": ""configs/live_base.yaml"", ""name"": ""live_base""}",fc44809a,0.19433,0.29529,0.69039,0.96812,-0.63303,8.25503,12.0,33.0
 2026-11-18T10:37:45,lseg:live:live_base,10.0,"{""config"": ""configs/live_base.yaml"", ""name"": ""live_base""}",fc44809a,0.18617,0.29531,0.66711,0.93454,-0.63467,8.25503,12.0,33.0
 2026-11-18T10:37:53,lseg:live:live_base_sleeve,0.0,"{""config"": ""configs/live_base_sleeve.yaml"", ""name"": ""live_base_sleeve""}",fc44809a,0.20829,0.3023,0.7198,1.01122,-0.64151,8.25503,12.0,33.0
@@ -48,3 +47,12 @@ timestamp,tag,cost_bps,params,cfg_hash,CAGR,Vol,Sharpe,Sortino,MaxDD,avg_swaps,m
 2026-11-18T10:40:09,lseg:live:live_4b_L4,0.0,"{""config"": ""configs/live_4b_L4.yaml"", ""name"": ""live_4b_L4""}",fc44809a,0.12201,0.18299,0.62497,0.87641,-0.36129,5.44295,6.0,18.0
 2026-11-18T10:40:18,lseg:live:live_4b_L4,5.0,"{""config"": ""configs/live_4b_L4.yaml"", ""name"": ""live_4b_L4""}",fc44809a,0.11769,0.18298,0.60385,0.84598,-0.3631,5.44295,6.0,18.0
 2026-11-18T10:40:29,lseg:live:live_4b_L4,10.0,"{""config"": ""configs/live_4b_L4.yaml"", ""name"": ""live_4b_L4""}",fc44809a,0.11337,0.18298,0.58271,0.81557,-0.36491,5.44295,6.0,18.0
+2026-11-18T10:57:09,lseg:live:live_base,0.0,"{""config"": ""configs/live_base.yaml"", ""name"": ""live_base""}",fc44809a,0.20255,0.29528,0.71363,1.00174,-0.63139,8.25503,12.0,33.0
+2026-11-18T10:57:27,lseg:rob:B buf30,0.0,"{""config"": ""configs/robustness/rob_B_buf30.yaml"", ""name"": ""rob_B_buf30""}",fc44809a,0.2084,0.33908,0.67506,0.97439,-0.64606,5.03691,6.0,18.0
+2026-11-18T10:57:38,lseg:rob:B n10,0.0,"{""config"": ""configs/robustness/rob_B_n10.yaml"", ""name"": ""rob_B_n10""}",fc44809a,0.24529,0.39127,0.70848,1.04754,-0.62906,3.22148,6.0,17.0
+2026-11-18T10:57:48,lseg:rob:B n20,0.0,"{""config"": ""configs/robustness/rob_B_n20.yaml"", ""name"": ""rob_B_n20""}",fc44809a,0.18389,0.31522,0.63722,0.90753,-0.62176,5.97987,6.0,18.0
+2026-11-18T10:57:56,lseg:rob:B rb2m,0.0,"{""config"": ""configs/robustness/rob_B_rb2m.yaml"", ""name"": ""rob_B_rb2m""}",fc44809a,0.16328,0.34299,0.55998,0.80865,-0.65035,5.91946,6.0,12.0
+2026-11-18T10:58:18,lseg:rob:C buf30,0.0,"{""config"": ""configs/robustness/rob_C_buf30.yaml"", ""name"": ""rob_C_buf30""}",fc44809a,0.13571,0.19945,0.64952,0.92733,-0.39259,5.03691,6.0,18.0
+2026-11-18T10:58:36,lseg:rob:C n10,0.0,"{""config"": ""configs/robustness/rob_C_n10.yaml"", ""name"": ""rob_C_n10""}",fc44809a,0.13408,0.2096,0.62049,0.90098,-0.38937,3.22148,6.0,17.0
+2026-11-18T10:58:53,lseg:rob:C n20,0.0,"{""config"": ""configs/robustness/rob_C_n20.yaml"", ""name"": ""rob_C_n20""}",fc44809a,0.11888,0.19183,0.59005,0.82864,-0.39612,5.97987,6.0,18.0
+2026-11-18T10:59:09,lseg:rob:C rb2m,0.0,"{""config"": ""configs/robustness/rob_C_rb2m.yaml"", ""name"": ""rob_C_rb2m""}",fc44809a,0.11941,0.20336,0.56969,0.81716,-0.41379,5.91946,6.0,12.0

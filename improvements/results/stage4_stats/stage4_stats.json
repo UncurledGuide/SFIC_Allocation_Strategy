@@ -1,0 +1,146 @@
+{
+ "estimates": {
+  "A: live baseline": {
+   "Sharpe": 0.7076194965625923,
+   "CAGR": 0.20050691785321018,
+   "MaxDD": -0.6313923360338717,
+   "DSR": 0.8594454937338155,
+   "Sharpe_ci95": [
+    0.31692763341208424,
+    1.1102584383836842
+   ],
+   "MaxDD_ci95": [
+    -0.8087623282683148,
+    -0.3833431054067155
+   ]
+  },
+  "B: A + L3": {
+   "Sharpe": 0.6920777680716634,
+   "CAGR": 0.2147290540752762,
+   "MaxDD": -0.6355334521069886,
+   "DSR": 0.8465105883876936,
+   "Sharpe_ci95": [
+    0.3332064288693627,
+    1.057255931185439
+   ],
+   "MaxDD_ci95": [
+    -0.828703049164173,
+    -0.43162772134794153
+   ]
+  },
+  "C: B + L4": {
+   "Sharpe": 0.6431580124979767,
+   "CAGR": 0.13371787674758018,
+   "MaxDD": -0.3952874459508974,
+   "DSR": 0.7795742027456996,
+   "Sharpe_ci95": [
+    0.28689252258304776,
+    1.005462859207724
+   ],
+   "MaxDD_ci95": [
+    -0.6038466173817494,
+    -0.28263455302250484
+   ]
+  }
+ },
+ "trials": {
+  "distinct_tags_in_log": 33,
+  "pitch_search_trials": 1728,
+  "N_trials": 1761,
+  "trial_sharpe_std_annual": 0.14348720580700988,
+  "expected_max_sharpe_null_annual": 0.4896817215742708,
+  "T_days": 6258
+ },
+ "bootstrap": {
+  "Sharpe diff B - A": {
+   "point": -0.01554172849092883,
+   "ci95": [
+    -0.13344657064514007,
+    0.08819167642191851
+   ],
+   "ci_includes_0": true,
+   "p_diff>0": 0.4115
+  },
+  "Sharpe diff C - A": {
+   "point": -0.0644614840646156,
+   "ci95": [
+    -0.24555052794403687,
+    0.11219068201147418
+   ],
+   "ci_includes_0": true,
+   "p_diff>0": 0.2461
+  },
+  "Sharpe diff C - B": {
+   "point": -0.048919755573686774,
+   "ci95": [
+    -0.1727585439344905,
+    0.08314460612624786
+   ],
+   "ci_includes_0": true,
+   "p_diff>0": 0.2225
+  },
+  "MaxDD diff C - A": {
+   "point": 0.2361048900829743,
+   "ci95": [
+    -0.008262419592939886,
+    0.32455895786213795
+   ],
+   "ci_includes_0": true
+  },
+  "MaxDD diff C - B": {
+   "point": 0.24024600615609126,
+   "ci95": [
+    0.06918890018214444,
+    0.3333084216891965
+   ],
+   "ci_includes_0": false
+  }
+ },
+ "L4_rule": {
+  "maxDD_C": -0.3952874459508974,
+  "maxDD_threshold": -0.49,
+  "dd_ok": true,
+  "sharpe_fall_C_vs_B": 0.048919755573686774,
+  "sharpe_ok": true,
+  "point_estimate_pass": true,
+  "CI_C_minus_B_sharpe": [
+   -0.1727585439344905,
+   0.08314460612624786
+  ],
+  "CI_includes_0": true
+ },
+ "drawdown_dates": {
+  "A: live baseline": {
+   "peak": "2008-06-23",
+   "trough": "2009-03-03",
+   "recovery": "2013-08-05",
+   "maxDD": -0.6313923360338717
+  },
+  "B: A + L3": {
+   "peak": "2008-06-23",
+   "trough": "2009-03-06",
+   "recovery": "2013-12-09",
+   "maxDD": -0.6355334521069886
+  },
+  "C: B + L4": {
+   "peak": "2002-01-04",
+   "trough": "2002-07-23",
+   "recovery": "2004-01-20",
+   "maxDD": -0.3952874459508974
+  }
+ },
+ "L4_exposure": {
+  "rebalance_dates": 299,
+  "share_of_rebalances_below_100pct": 0.9698996655518395,
+  "share_of_days_below_100pct": 0.9701182486417386,
+  "mean_exposure": 0.6323600437697082,
+  "min_exposure": 0.1566167432499185,
+  "share_of_rebalances_below_50pct": 0.26421404682274247
+ },
+ "bootstrap_settings": {
+  "block_days": 63,
+  "reps": 10000,
+  "seed": 42,
+  "type": "paired circular block bootstrap of daily returns"
+ }
+}
