@@ -1,0 +1,11 @@
+pandas
+numpy
+scipy
+matplotlib
+pyyaml
+pyarrow
+yfinance
+lxml
+requests
+tabulate
+pytest

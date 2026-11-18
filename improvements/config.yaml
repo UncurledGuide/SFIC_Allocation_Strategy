@@ -1,0 +1,41 @@
+# All parameters fixed BEFORE seeing any results. Do not tune.
+data:
+  start: "2000-01-01"
+  backtest_start: "2002-01-01"
+  cache_dir: "data"
+universe:
+  size: 500
+  adv_window: 63          # trailing days for avg dollar volume
+  min_history: 252        # need a full year of data before a stock is eligible
+  volume_type: dollar     # "dollar" (main) or "share" (robustness check)
+benchmark:
+  weights: {SPY: 0.65, EFA: 0.15, AGG: 0.20}
+  agg_proxy: VBMFX
+signals:
+  mom_lookback_baseline: 180
+  high_window: 252
+  mom_6_1: {start: 126, end: 21}
+baseline:
+  n_stocks: 15
+  mom_share: 0.70         # 10 of 15 from momentum, 5 from 52w-high
+portfolio:
+  vol_window: 63
+  max_per_sector: 4
+trading:
+  rebalance_days: 21
+  buffer_enter: 15
+  buffer_exit: 25
+  max_swaps: 6
+overlay:
+  vol_window: 126
+  target_calib_end: "2014-12-31"
+  min_change: 0.10
+costs_bps: [0, 5, 10]
+periods:
+  in_sample: ["2002-01-01", "2014-12-31"]
+  out_of_sample: ["2015-01-01", null]
+stats:
+  original_search_trials: 1728   # 288 weightings x 6 portfolio sizes
+  bootstrap_block_months: 3
+  bootstrap_reps: 5000
+  seed: 42

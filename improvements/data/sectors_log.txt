@@ -1,0 +1,13 @@
+913 tickers; 46 Unknown
+Industrials               144
+Technology                140
+Consumer Cyclical         126
+Financial Services        112
+Healthcare                 91
+Real Estate                58
+Consumer Defensive         52
+Unknown                    46
+Basic Materials            41
+Energy                     38
+Utilities                  36
+Communication Services     29

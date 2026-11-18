@@ -1,0 +1,7 @@
+{
+ "tickers_requested": 1545,
+ "tickers_with_data": 1096,
+ "tickers_missing (delisted/unavailable)": 449,
+ "coverage_pct": 70.9,
+ "tickers_ever_in_universe": 913
+}

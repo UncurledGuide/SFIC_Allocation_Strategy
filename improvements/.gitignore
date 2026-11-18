@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+# large cached downloads; regenerate with run_stage1.py
+data/*.parquet
+data/*.pkl
