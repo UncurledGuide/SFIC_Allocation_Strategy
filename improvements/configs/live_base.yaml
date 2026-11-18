@@ -1,0 +1,11 @@
+# SFIC live-tool rule (SFIC_live_rebalance.ipynb): momentum = return t-200 -> t-20; 52w-high = price / prior 252d max close; 10 + 5 names.
+# Live-rule baseline (equal weight)
+name: live_base
+tag: "live:live_base"
+stage: live_rule
+selection: {type: baseline_two_list, n_stocks: 15, mom_share: 0.70, mom_signal: mom_live, high_signal: near52_live}
+sector_cap: null
+quality_filter: false
+weighting: equal
+weight_cap: null
+buffer: {enabled: false}

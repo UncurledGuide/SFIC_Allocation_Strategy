@@ -7,3 +7,10 @@ data/*.parquet
 data/*.pkl
 shared_data/
 shared_data.zip
+
+# LSEG credentials: never commit
+lseg-data.config.json
+*lseg-data.config*.json
+
+# LSEG licensed data caches: do NOT redistribute via GitHub (public repo); regenerate with scripts/lseg_pull.py
+data/lseg/

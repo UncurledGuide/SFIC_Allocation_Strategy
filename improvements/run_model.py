@@ -3,7 +3,7 @@ Writes results/<stage>/<name>_{returns,swaps,metrics}.csv and logs the trial to 
 import argparse
 from pathlib import Path
 import numpy as np, pandas as pd
-from src import models, backtest, metrics, overlay
+from src import data, models, backtest, metrics, overlay
 
 ap = argparse.ArgumentParser()
 ap.add_argument("configs", nargs="+")
@@ -15,7 +15,9 @@ for path in args.configs:
     cfg = models.load_model_cfg(path)
     ctx = ctx or models.build_context(cfg)
     fn = models.build_target_fn(cfg, ctx)
-    out = Path("results") / cfg["stage"]; out.mkdir(parents=True, exist_ok=True)
+    LS = data._use_lseg(None)
+    if LS: cfg["tag"] = "lseg:" + cfg["tag"]
+    out = Path("results") / (("lseg_" if LS else "") + cfg["stage"]); out.mkdir(parents=True, exist_ok=True)
     PER = {"IS": cfg["periods"]["in_sample"], "OOS": cfg["periods"]["out_of_sample"], "Full": ["2002-01-01", None]}
     rows, expo = [], None
     ov = cfg.get("overlay", {})

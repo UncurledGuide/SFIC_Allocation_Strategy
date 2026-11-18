@@ -17,10 +17,17 @@ def nearness_52w(adj_close, high_adj, window=252):
     return adj_close / high_adj.rolling(window, min_periods=window).max()
 
 
+def nearness_live(adj_close, window=252, min_periods=63):
+    """SFIC live-tool rule: price / PRIOR rolling max of adjusted close (shifted one day, so a new high scores > 1)."""
+    return adj_close / adj_close.shift(1).rolling(window, min_periods=min_periods).max()
+
+
 def compute_all(px, cfg):
     s = cfg["signals"]
     return {
         "mom180": mom_lookback(px["adj_close"], s["mom_lookback_baseline"]),
         "mom6_1": mom_skip(px["adj_close"], s["mom_6_1"]["start"], s["mom_6_1"]["end"]),
         "near52": nearness_52w(px["adj_close"], px["high"], s["high_window"]),
+        "mom_live": mom_skip(px["adj_close"], 200, 20),                 # SFIC live tool: return t-200 -> t-20
+        "near52_live": nearness_live(px["adj_close"], s["high_window"]),
     }

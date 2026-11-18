@@ -109,12 +109,12 @@ def cap_weights(w, cap=0.10):
     return w
 
 
-def baseline_select2(d, sig, universe, n=15, mom_share=0.70, mom_key="mom180", ok=None, sectors=None, cap=None):
+def baseline_select2(d, sig, universe, n=15, mom_share=0.70, mom_key="mom180", ok=None, sectors=None, cap=None, high_key="near52"):
     """Baseline two-list picker with optional signal swap (mom_key), data filter `ok` (DataFrame, NaN = excluded)
     and sector cap. Momentum slots first; 52w-high slots take the best names not already picked."""
     elig = [t for t in universe[d] if t in sig[mom_key].columns]
     m = sig[mom_key].loc[d, elig].dropna()
-    h = sig["near52"].loc[d, elig].dropna()
+    h = sig[high_key].loc[d, elig].dropna()
     idx = m.index.intersection(h.index)
     if ok is not None:
         idx = idx.intersection(ok.loc[d].dropna().index)
@@ -140,15 +140,15 @@ def baseline_select2(d, sig, universe, n=15, mom_share=0.70, mom_key="mom180", o
 
 
 def baseline_buffered(d, sig, universe, held, n=15, mom_share=0.70, mom_key="mom180", ok=None,
-                      sectors=None, cap=None, exit_n=25, max_swaps=6):
+                      sectors=None, cap=None, exit_n=25, max_swaps=6, high_key="near52"):
     """Layer 3 applied to the two-list baseline. A holding is kept while it is still within the n=25 version of
     either list (top 18 momentum / top 7 52w-high); sells are capped at max_swaps (worst first); buys come from the
     n=15 selection in order of rank-within-its-list. (Spec defines the buffer for a single ranking; this is the
     natural extension to two lists.)"""
     if not held:
-        return baseline_select2(d, sig, universe, n, mom_share, mom_key, ok, sectors, cap)
+        return baseline_select2(d, sig, universe, n, mom_share, mom_key, ok, sectors, cap, high_key)
     elig = [t for t in universe[d] if t in sig[mom_key].columns]
-    m = sig[mom_key].loc[d, elig].dropna(); h = sig["near52"].loc[d, elig].dropna()
+    m = sig[mom_key].loc[d, elig].dropna(); h = sig[high_key].loc[d, elig].dropna()
     idx = m.index.intersection(h.index)
     if ok is not None:
         idx = idx.intersection(ok.loc[d].dropna().index)
@@ -172,8 +172,8 @@ def baseline_buffered(d, sig, universe, held, n=15, mom_share=0.70, mom_key="mom
     for t in keep:
         cnt[_sec(t, sectors) if sectors is not None else t] = cnt.get(_sec(t, sectors) if sectors is not None else t, 0) + 1
     out = list(keep)
-    pools = [baseline_select2(d, sig, universe, n, mom_share, mom_key, ok, sectors, cap),
-             baseline_select2(d, sig, universe, exit_n, mom_share, mom_key, ok, sectors, cap)]
+    pools = [baseline_select2(d, sig, universe, n, mom_share, mom_key, ok, sectors, cap, high_key),
+             baseline_select2(d, sig, universe, exit_n, mom_share, mom_key, ok, sectors, cap, high_key)]
     for pool in pools:
         for t in sorted([x for x in pool if x not in out], key=bad):
             if len(out) >= n:

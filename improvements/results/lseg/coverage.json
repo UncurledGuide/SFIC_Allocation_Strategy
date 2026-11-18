@@ -1,0 +1,61 @@
+{
+ "data_end": "2026-11-17",
+ "data_start": "2000-01-03",
+ "pool_rics": 2081,
+ "pool_sp500": 1088,
+ "pool_sp400": 1386,
+ "rics_with_prices": 2076,
+ "rics_no_prices": 5,
+ "coverage_pct": 99.8,
+ "caret_rics_in_pool": 948,
+ "caret_with_prices": 943,
+ "caret_no_prices": 5,
+ "priced_rics_whose_history_ended_early(stopped trading)": 938,
+ "delisted_or_stopped_with_prices": 943,
+ "no_price_reasons": {
+  "no price rows": 5
+ },
+ "member_month_coverage": {
+  "sp400": {
+   "member_months": 122149,
+   "priced_pct": 99.7
+  },
+  "sp500": {
+   "member_months": 161442,
+   "priced_pct": 99.8
+  }
+ },
+ "data_quality": {
+  "rics_with_<252_rows": 34,
+  "median_history_years": 18.2,
+  "non_positive_close_cells": 19,
+  "daily_moves_>100pct": 193,
+  "rics_with_zero_volume_share>20pct": 0,
+  "yahoo_overlap_names": 955,
+  "yahoo_adj_return_corr_median": 0.99987,
+  "yahoo_overlap_corr_below_0.99": 42,
+  "yahoo_overlap_corr_below_0.95": 14
+ },
+ "membership_reconstruction": {
+  "sp500": {
+   "size_min": 493,
+   "size_median": 500.0,
+   "size_max": 506,
+   "first_month_end": "2000-01-31",
+   "anomalies": {
+    "joiner_not_in_set": 1,
+    "leaver_already_in_set": 0
+   }
+  },
+  "sp400": {
+   "size_min": 399,
+   "size_median": 401.0,
+   "size_max": 406,
+   "first_month_end": "2001-07-31",
+   "anomalies": {
+    "joiner_not_in_set": 0,
+    "leaver_already_in_set": 2
+   }
+  }
+ }
+}
