@@ -11,4 +11,5 @@ These apply to every number in `RESULTS.md`. The first three bias results **upwa
 7. **High market exposure.** The baseline is 100% equity with beta 1.17 (1.45 out-of-sample) against a 65/15/20 benchmark, so raw return gaps are partly market risk. Sharpe, CAPM alpha and information ratio are the fairer comparisons.
 8. **Frozen delisted holdings** and **tie-breaking** (DECISIONS 4, 12) are small, generous-leaning approximations.
 9. **Single run per configuration, one path of history.** No confidence intervals yet (bootstrap and Deflated Sharpe are Stage 4 items still to do); differences of a few hundredths of Sharpe between rows are not distinguishable from noise.
-10. **Diagnostics were run after seeing Stage 3 results**, and 4b's data fix is a spec change; both are counted as trials.
+10. **Layer 4 is calibrated on the benchmark's 2002-2014 vol** and then held fixed; because 100%-equity strategies run well above that target, w < 1 at ~96% of rebalances, so the overlay acts mostly as a constant de-risking, not as timing.
+11. **Diagnostics were run after seeing Stage 3 results**, and 4b's data fix is a spec change; both are counted as trials.

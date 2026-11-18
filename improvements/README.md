@@ -5,7 +5,7 @@ from the original spec and tests four proposed improvements ("layers") one at a 
 universe, no look-ahead, fixed parameters, every trial logged.
 
 **Headline: the pitch's ~1.7 Sharpe does not reproduce (rebuilt baseline = 0.91 over 2002-present vs 0.48 for the benchmark), and layer 1 (rank-average signal) hurts.**
-Layer 3 (rank buffer + swap cap) brings trades within the <= 20/quarter promise at no Sharpe cost. See `docs/RESULTS.md`.
+Layer 3 (rank buffer + swap cap) brings trades within the <= 20/quarter promise at no Sharpe cost. Layer 4 (vol targeting) cuts max drawdown from about -59% to -37% but lowers the Sharpe. See `docs/RESULTS.md`.
 
 ## Layout
 ```
@@ -39,5 +39,6 @@ Yahoo data drifts slightly between downloads, so a fresh download may not match 
 | `baseline` | original pitch: 10 by 180-day return + 5 by 52-week-high nearness, equal weight |
 | `2b` | baseline + layer 3 (rank buffer: keep while top-18 momentum / top-7 high; max 6 swaps) |
 | `4b` | baseline + layer 2 (inverse-vol, 4/sector, quality filter, 10% weight cap) + layer 3 |
+| `2b_L4`, `4b_L4` | 2b / 4b + layer 4 vol-target overlay (`python run_model.py configs/2b_L4.yaml configs/4b_L4.yaml --costs 0 5 10`) |
 
-Layers: L1 rank-average signal, L2 inverse-vol weights + sector cap, L3 rank buffer + swap cap, L4 vol-target overlay (L4 is the next step).
+Layers: L1 rank-average signal, L2 inverse-vol weights + sector cap, L3 rank buffer + swap cap, L4 vol-target overlay.

@@ -1,0 +1,12 @@
+# 4b + Layer 4 vol-targeting overlay (target = benchmark vol 2002-2014, 126d strategy vol, update if |dw|>0.10).
+# quality filter (ann. 63d vol >= 8%, <= 5 zero-return days) and a 10% max weight  [SPEC CHANGE, see docs/DECISIONS.md]
+name: 4b_L4
+tag: "L4:4b+L4"
+stage: stage4
+selection: {type: baseline_two_list, n_stocks: 15, mom_share: 0.70, mom_signal: mom180}
+sector_cap: 4
+quality_filter: true
+weighting: inverse_vol
+weight_cap: 0.10
+buffer: {enabled: true, exit_rank: 25, max_swaps: 6}
+overlay: {enabled: true}

@@ -22,6 +22,8 @@ alpha vs the SFIC benchmark (t-stat in parentheses). Benchmark = 65% SPY / 15% E
 | v2 L1+L2+L3                           |        0.57 |         0.68 |          0.63 | 12.9%  | 19.7% |      0.86 | -46.8%  |     0.27 |         1.12 | 5.0% (2.0)  | 0.41 | 5.9 / 6 / 18        |
 | v2 L1+L2 (fixed)                      |        0.54 |         0.57 |          0.56 | 11.3%  | 19.5% |      0.77 | -50.3%  |     0.22 |         1.06 | 3.7% (1.5)  | 0.29 | 11.0 / 15 / 42      |
 | v2 L1+L2+L3 (fixed)                   |        0.55 |         0.69 |          0.62 | 12.8%  | 19.9% |      0.85 | -46.6%  |     0.27 |         1.12 | 4.9% (1.9)  | 0.40 | 5.9 / 6 / 18        |
+| 2b + L4 (vol target)                  |        0.78 |         0.98 |          0.88 | 18.5%  | 19.4% |      1.27 | -37.2%  |     0.5  |         0.82 | 11.8% (3.7) | 0.61 | 5.5 / 6 / 18        |
+| 4b + L4 (vol target)                  |        0.81 |         1.01 |          0.9  | 17.1%  | 17.2% |      1.27 | -37.9%  |     0.45 |         0.89 | 9.9% (3.9)  | 0.64 | 5.6 / 6 / 18        |
 | Benchmark 65/15/20                    |        0.38 |         0.62 |          0.48 | 8.1%   | 15.0% |      0.68 | -47.0%  |     0.17 |         1    | -           | -    | -                   |
 
 Bold rows (2b, 4b) are the two models Layer 4 was run on. The spec's own L2 (rows 2a, 2c, v2 spec) and the data-fixed L2 (4a, 4b, v2 fixed:
@@ -32,6 +34,8 @@ quality filter + 10% max weight) are both shown; the fixed version is a spec cha
 |:------------|--------:|--------:|---------:|
 | Baseline    |    0.91 |    0.89 |     0.86 |
 | v2 L1+L2+L3 |    0.63 |    0.6  |     0.57 |
+| 2b+L4       |    0.88 |    0.87 |     0.85 |
+| 4b+L4       |    0.9  |    0.88 |     0.85 |
 
 ## Crash windows (cumulative return, 0 bps)
 |           | 2008-09 to 2009-03   | 2009-03 to 2009-05 (momentum crash)   | 2020-02 to 2020-04   | 2022   |
@@ -39,6 +43,8 @@ quality filter + 10% max weight) are both shown; the fixed version is a spec cha
 | Baseline  | -35.0%               | -1.0%                                 | 5.4%                 | -27.5% |
 | 2b        | -42.0%               | -3.7%                                 | 5.3%                 | -20.6% |
 | 4b        | -40.3%               | -1.9%                                 | 1.0%                 | -13.9% |
+| 2b+L4     | -23.8%               | -2.0%                                 | -1.0%                | -10.7% |
+| 4b+L4     | -23.4%               | -0.7%                                 | -4.9%                | -8.3%  |
 | Benchmark | -30.2%               | 23.1%                                 | -7.8%                | -16.3% |
 
 ## Look-ahead diagnostic (NOT a valid backtest)
@@ -51,5 +57,5 @@ future success. It exists only to show how much of the baseline's result depends
 | Baseline, point-in-time universe (for comparison) |        0.78 |         1.04 |          0.91 | 25.5%  | -49.4%  | 16.2% (3.9) |
 
 ## Trial count
-`results/trials_log.csv` holds **14** distinct trial tags (each distinct model/variant run counts once; costs are not separate trials).
+`results/trials_log.csv` holds **16** distinct trial tags (each distinct model/variant run counts once; costs are not separate trials).
 The Deflated Sharpe Ratio must add the original search (288 weightings x 6 portfolio sizes = 1,728 trials) to this number.
