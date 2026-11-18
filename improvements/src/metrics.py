@@ -31,7 +31,16 @@ def perf(r, rf, bench, swaps=None):
     mdd = max_drawdown(r)
     out = {"CAGR": cagr, "Vol": vol, "Sharpe": sharpe, "Sortino": sortino, "MaxDD": mdd,
            "Calmar": cagr / abs(mdd) if mdd < 0 else np.nan,
-           "Beta": float(np.cov(r, b)[0, 1] / b.var()), "Corr": float(np.corrcoef(r, b)[0, 1])}
+           "Corr": float(np.corrcoef(r, b)[0, 1])}
+    # CAPM on daily excess returns over T-bills: (r - rf) = a + beta (b - rf) + e ; alpha annualised (x252)
+    bx = b - rf
+    beta = float(np.cov(ex, bx)[0, 1] / bx.var())
+    a = float(ex.mean() - beta * bx.mean())
+    resid = ex - a - beta * bx
+    se_a = float(resid.std(ddof=2) * np.sqrt(1 / len(ex) + bx.mean() ** 2 / ((bx - bx.mean()) ** 2).sum()))
+    act = r - b
+    out.update({"Beta": beta, "Alpha": a * TD, "Alpha_t": a / se_a,
+                "InfoRatio": float(act.mean() / act.std() * np.sqrt(TD))})
     if swaps is not None:
         sw = swaps.loc[(swaps.index >= idx[0]) & (swaps.index <= idx[-1])]
         out.update(swaps_stats(sw))

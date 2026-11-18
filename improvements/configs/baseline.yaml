@@ -1,0 +1,10 @@
+# Original pitch: 15 equal-weight stocks, 10 by 180-day return + 5 by 52-week-high nearness, monthly rebalance.
+name: baseline
+tag: "diag:Baseline"
+stage: diagnostics
+selection: {type: baseline_two_list, n_stocks: 15, mom_share: 0.70, mom_signal: mom180}
+sector_cap: null
+quality_filter: false
+weighting: equal
+weight_cap: null
+buffer: {enabled: false}

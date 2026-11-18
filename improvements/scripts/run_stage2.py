@@ -31,7 +31,7 @@ for pn, (a, b) in P.items():
 rows.append({"model": "Baseline", "cost_bps": 0, "period": "Last2y", **metrics.perf(r.iloc[-504:], tb, bench, sw)})
 rows.append({"model": "Benchmark", "cost_bps": 0, "period": "Last2y", **metrics.perf(bm.iloc[-504:], tb, bench)})
 df = pd.DataFrame(rows)
-df.to_csv("results/stage2_baseline.csv", index=False)
+df.to_csv("results/stage2/stage2_baseline.csv", index=False)
 pd.set_option("display.width", 250); pd.set_option("display.float_format", "{:.3f}".format)
 cols = ["model", "cost_bps", "period", "CAGR", "Vol", "Sharpe", "Sortino", "MaxDD", "Calmar", "Beta", "Corr", "avg_swaps", "max_swaps", "max_swaps_qtr"]
 print(df[cols].to_string(index=False))
@@ -40,4 +40,4 @@ print("swaps per rebalance (ex initial build): n=%d mean=%.2f median=%.1f min=%d
 print("avg one-way turnover per rebalance: %.2f" % to.mean())
 q = sw.groupby([sw.index.year, sw.index.quarter]).sum()
 print("swaps/quarter: mean %.1f max %d; share of quarters >20: %.1f%%" % (q.mean(), q.max(), 100*(q>20).mean()))
-sw.to_csv("results/stage2_baseline_swaps.csv"); r.to_csv("results/stage2_baseline_returns.csv")
+sw.to_csv("results/stage2/stage2_baseline_swaps.csv"); r.to_csv("results/stage2/stage2_baseline_returns.csv")

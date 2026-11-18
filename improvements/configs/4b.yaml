@@ -1,0 +1,11 @@
+# Baseline + Layer 2 (inverse-vol, max 4/sector) + Layer 3, with the diagnostics data fix:
+# quality filter (ann. 63d vol >= 8%, <= 5 zero-return days) and a 10% max weight  [SPEC CHANGE, see docs/DECISIONS.md]
+name: 4b_baseline_L2_L3_fixed
+tag: "diag:4b Base+L2+L3 (fixed)"
+stage: diagnostics
+selection: {type: baseline_two_list, n_stocks: 15, mom_share: 0.70, mom_signal: mom180}
+sector_cap: 4
+quality_filter: true
+weighting: inverse_vol
+weight_cap: 0.10
+buffer: {enabled: true, exit_rank: 25, max_swaps: 6}

@@ -1,0 +1,10 @@
+# Baseline + Layer 3 only: rank buffer (keep while top-18 momentum / top-7 52w-high) and max 6 swaps per rebalance.
+name: 2b_baseline_L3
+tag: "diag:2b Base+L3"
+stage: diagnostics
+selection: {type: baseline_two_list, n_stocks: 15, mom_share: 0.70, mom_signal: mom180}
+sector_cap: null
+quality_filter: false
+weighting: equal
+weight_cap: null
+buffer: {enabled: true, exit_rank: 25, max_swaps: 6}

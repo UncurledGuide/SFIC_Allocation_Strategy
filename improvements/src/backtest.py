@@ -53,4 +53,11 @@ def log_trial(tag, params, metrics, cost_bps):
            "params": json.dumps(params, sort_keys=True, default=str),
            "cfg_hash": hashlib.md5(json.dumps(D.CFG, sort_keys=True, default=str).encode()).hexdigest()[:8],
            **{k: round(v, 5) for k, v in metrics.items() if k in ("CAGR", "Vol", "Sharpe", "Sortino", "MaxDD", "avg_swaps", "max_swaps", "max_swaps_qtr")}}
-    pd.DataFrame([row]).to_csv(LOG, mode="a", header=not LOG.exists(), index=False)
+    # one row per (tag, cost_bps): a re-run of the same trial replaces its row, so the number of distinct tags
+    # in this file is the trial count used for the Deflated Sharpe Ratio
+    new = pd.DataFrame([row])
+    if LOG.exists():
+        old = pd.read_csv(LOG)
+        old = old[~((old["tag"] == tag) & (old["cost_bps"] == cost_bps))]
+        new = pd.concat([old, new], ignore_index=True)
+    new.to_csv(LOG, index=False)

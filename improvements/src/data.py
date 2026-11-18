@@ -104,6 +104,7 @@ def get_prices(refresh=False):
             v = v.dropna(axis=1, how="all")
             v.to_parquet(DATA / f"prices_{k}.parquet")
         json.dump(tickers, open(DATA / "requested_tickers.json", "w"))
+        retry_missing()   # the first pass is rate-limited by Yahoo; re-request empty tickers slowly
     return {k: pd.read_parquet(DATA / f"prices_{k}.parquet") for k in FIELDS}
 
 

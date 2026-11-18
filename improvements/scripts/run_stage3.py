@@ -39,8 +39,8 @@ for name, fn in MODELS.items():
             rets_out[name], sw_out[name] = r, sw
             w_out[name] = wl
     print("done", name, flush=True)
-df = pd.DataFrame(rows); df.to_csv("results/stage3_ablation_all.csv", index=False)
-pd.DataFrame(rets_out).to_csv("results/stage3_returns.csv"); pd.DataFrame(sw_out).to_csv("results/stage3_swaps.csv")
+df = pd.DataFrame(rows); df.to_csv("results/stage3/stage3_ablation_all.csv", index=False)
+pd.DataFrame(rets_out).to_csv("results/stage3/stage3_returns.csv"); pd.DataFrame(sw_out).to_csv("results/stage3/stage3_swaps.csv")
 pd.set_option("display.width", 250); pd.set_option("display.float_format", "{:.3f}".format)
 cols = ["model", "period", "CAGR", "Vol", "Sharpe", "Sortino", "MaxDD", "Calmar", "Beta", "Corr", "avg_swaps", "max_swaps", "max_swaps_qtr", "turnover"]
 print(df[df.cost_bps == 0][cols].to_string(index=False))
@@ -51,9 +51,15 @@ W = {"2008-09..2009-03": ("2008-09-01", "2009-03-31"), "2009-03..05 (mom crash)"
      "2020-02..04": ("2020-02-01", "2020-04-30"), "2022": ("2022-01-01", "2022-12-31")}
 cr = {k: {m: float((1 + rets_out[m].loc[a:b]).prod() - 1) for m in MODELS} | {"Benchmark": float((1 + bench.loc[a:b]).prod() - 1)} for k, (a, b) in W.items()}
 print("\nCrash windows (cumulative return):"); print(pd.DataFrame(cr).T.to_string())
-pd.DataFrame(cr).T.to_csv("results/stage3_crash.csv")
+pd.DataFrame(cr).T.to_csv("results/stage3/stage3_crash.csv")
 # sanity: sector cap & swap cap
 l3 = w_out["+L1+L2+L3"]; l2 = w_out["+L1+L2"]
 mx = lambda wl: max(pd.Series([sectors.get(t, "Unknown") for t in w.index]).where(lambda s: s != "Unknown").value_counts().max() for w in wl.values())
 print("\nmax names in one (known) sector: L2 =", mx(l2), " L3 =", mx(l3), "| max swaps L3 =", sw_out["+L1+L2+L3"].max())
 print("max single weight L2: %.3f, L3: %.3f" % (max(w.max() for w in l2.values()), max(w.max() for w in l3.values())))
+# ablation table (cumulative models, 0 bps) as csv + markdown
+o = {"Baseline": 0, "+L1": 1, "+L1+L2": 2, "+L1+L2+L3": 3}; pp = {"IS": 0, "OOS": 1, "Full": 2}
+a = df[df.cost_bps == 0].drop(columns="cost_bps")
+a = a.assign(k1=a.period.map(pp), k2=a.model.map(o)).sort_values(["k1", "k2"]).drop(columns=["k1", "k2"])
+a.to_csv("results/stage3/ablation_table_stage3.csv", index=False)
+open("results/stage3/ablation_table_stage3.md", "w").write(a.round(3).to_markdown(index=False))

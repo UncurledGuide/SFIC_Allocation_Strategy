@@ -20,6 +20,6 @@ for y in range(2002, 2027, 4):
     rows.append((y, len(m), len(m & got), round(100 * len(m & got) / len(m), 1)))
 cov = pd.DataFrame(rows, columns=["year", "sp500_members", "with_data", "pct"])
 print(cov.to_string(index=False))
-cov.to_csv(data.DATA.parent / "results" / "coverage_by_year.csv", index=False)
-json.dump({**rep}, open(data.DATA.parent / "results" / "coverage.json", "w"), indent=1)
+cov.to_csv(data.DATA.parent / "results" / "stage1" / "coverage_by_year.csv", index=False)
+json.dump({**rep}, open(data.DATA.parent / "results" / "stage1" / "coverage.json", "w"), indent=1)
 pd.to_pickle(u, data.DATA / "universe_dollar.pkl")

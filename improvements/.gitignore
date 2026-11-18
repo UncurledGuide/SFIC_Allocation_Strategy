@@ -5,3 +5,5 @@ __pycache__/
 # large cached downloads; regenerate with run_stage1.py
 data/*.parquet
 data/*.pkl
+shared_data/
+shared_data.zip

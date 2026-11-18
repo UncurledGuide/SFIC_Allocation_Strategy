@@ -1,0 +1,20 @@
+done Baseline
+done 1a Base, 6-1 mom (70/30)
+done 1b Base, 50/50 split
+done 1c Rank score alone (L1)
+done 2a Base+L2 (spec)
+done 2b Base+L3
+done 2c Base+L2+L3 (spec)
+done 4a Base+L2 (fixed)
+done 4b Base+L2+L3 (fixed)
+done v2 +L1+L2 (spec)
+done v2 +L1+L2+L3 (spec)
+done v2 +L1+L2 (fixed)
+done v2 +L1+L2+L3 (fixed)
+done 3 Baseline, FIXED today-top500
+/Users/humza/Projects/SFIC_Allocation_Strategy/improvements/src/metrics.py:43: RuntimeWarning: invalid value encountered in scalar divide
+  "InfoRatio": float(act.mean() / act.std() * np.sqrt(TD))})
+/Users/humza/Projects/SFIC_Allocation_Strategy/improvements/src/metrics.py:43: RuntimeWarning: invalid value encountered in scalar divide
+  "InfoRatio": float(act.mean() / act.std() * np.sqrt(TD))})
+/Users/humza/Projects/SFIC_Allocation_Strategy/improvements/src/metrics.py:43: RuntimeWarning: invalid value encountered in scalar divide
+  "InfoRatio": float(act.mean() / act.std() * np.sqrt(TD))})
