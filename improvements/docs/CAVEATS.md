@@ -21,4 +21,7 @@ These apply to every number in `RESULTS.md`. The first three bias results **upwa
 17. **The L4 pass is marginal:** the Sharpe fall vs B is 0.0489 against a limit of 0.05, and the bootstrap CI for that difference (-0.17 to +0.08) includes 0.
 18. **Window dependence:** the pitch's ~1.7 Sharpe appears only in 2024-08 to 2026-11 (our baseline 1.69; live-rule baseline 1.33). Over 2002-2026 the live-rule baseline is 0.71.
 19. **The group's backtest notebook** (`sfic.ipynb`) uses 30%/70% momentum/high weights by default and a 365-row high lookback, unlike its live tool (70%/30%, 252); its stored outputs came from an older version of the code. It is not replicated here.
+20. **Idea results are single runs.** Each new idea was run once, as pre-registered; none passed, so no multiple-testing correction is needed for a 'winner', but the four runs still count as trials (the trial count is now 37 + 1,728).
+21. **Residual momentum starts in 2003** (needs 36 months of history), so its 2002-2014 comparison with B is not like for like; see RESULTS for the 2003-2014 comparison.
+22. **Crash-state rule parameters (50%, 24-month, 126-day, 2002-2014 median) were fixed in advance** but the median is computed on data that includes the test years 2002-2014, like L4's target.
 

@@ -57,7 +57,7 @@ future success. It exists only to show how much of the baseline's result depends
 | Baseline, point-in-time universe (for comparison) |        0.78 |         1.04 |          0.91 | 25.5%  | -49.4%  | 16.2% (3.9) |
 
 ## Trial count
-`results/trials_log.csv` holds **16** distinct trial tags (each distinct model/variant run counts once; costs are not separate trials).
+`results/trials_log.csv` holds **37** distinct trial tags (each distinct model/variant run counts once; costs are not separate trials).
 The Deflated Sharpe Ratio must add the original search (288 weightings x 6 portfolio sizes = 1,728 trials) to this number.
 
 <!-- STAGE4-LSEG:start -->
@@ -122,3 +122,23 @@ L4 held less than 100% in stocks at **97.0%** of the 299 monthly rebalances (97.
 
 Parameters not varied in each row are held at the base values (buffer exit rank 25, max 6 swaps per rebalance, 15 names unless stated); L3 parameters were not rescaled for the size variants.
 <!-- STAGE4-LSEG:end -->
+
+<!-- IDEAS:start -->
+## New-ideas round (pre-registered, each run once, swapped into candidate B; LSEG data, 0 bps)
+Pass rule fixed in advance: Sharpe beats B by >= 0.10 in BOTH 2002-2014 and 2015-2026, AND full-sample max DD no worse than B's (idea 3 is also compared with C). No ideas were combined and no variants were tried.
+
+| Model | Sharpe 2002-14 | Sharpe 2015-26 | Sharpe full | CAGR | Max DD | Alpha | Swaps (avg per rebalance / max per quarter) | Pass? |
+|:--|--:|--:|--:|--:|--:|--:|:--|:--|
+| B (baseline + L3) | 0.48 | 0.89 | 0.70 | 21.7% | -63.6% | 13.4% | 5.3 / 18 | reference |
+| C (B + L4) | 0.52 | 0.78 | 0.65 | 13.5% | -39.5% | 7.2% | 5.3 / 18 | reference |
+| 1 Residual momentum | 0.59 | 0.51 | 0.54 | 13.9% | -57.8% | 6.9% | 5.6 / 21 | FAIL vs B (dIS +0.11, dOOS -0.38) |
+| 2 Frog-in-the-pan | 0.46 | 0.69 | 0.57 | 15.0% | -58.8% | 6.2% | 5.8 / 18 | FAIL vs B (dIS -0.02, dOOS -0.20) |
+| 3 Crash-state rule (vs L4) | 0.49 | 0.88 | 0.70 | 21.4% | -57.8% | 13.9% | 5.3 / 18 | FAIL vs B (dIS +0.01, dOOS -0.01); FAIL vs C (dIS -0.02, dOOS +0.11, DD worse) |
+| 4 12-1 momentum | 0.48 | 0.75 | 0.62 | 17.4% | -58.3% | 8.6% | 5.2 / 18 | FAIL vs B (dIS +0.00, dOOS -0.14) |
+
+**Result: no idea passes.** The best by full-sample Sharpe is 3 Crash-state rule (vs L4) (that is B plus a rarely-triggered de-risking rule: it holds 50% stocks at only 7.7% of rebalances, mean exposure 0.96); it matches B's Sharpe, trims the max drawdown modestly, and does not match C's drawdown protection.
+- Residual momentum has a data-availability artifact: its signal needs 36 completed months, so the portfolio sits in T-bills until January 2003. Its apparent +0.11 in 2002-2014 comes from missing 2002; from 2003 to 2014 its Sharpe is 0.60 against B's 0.62. Out of sample it is far worse.
+- Frog-in-the-pan and 12-1 momentum are worse than B out of sample (-0.20 and -0.14 Sharpe) and no better in sample.
+
+**Deflated Sharpe, updated for the new trial count:** N = 1765 (37 distinct tags + 1,728). Best idea (3 Crash-state rule (vs L4)): **0.86**; B at the same N: 0.85. Expected best Sharpe among N null trials is 0.49. Neither is above the 0.95 convention, and the best idea is not distinguishable from B.
+<!-- IDEAS:end -->

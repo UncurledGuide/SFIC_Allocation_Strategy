@@ -1,0 +1,10 @@
+# New-ideas round (pre-registered, run once): B with the momentum list replaced by residual momentum
+name: idea1_resid_mom
+tag: "idea:1 residual momentum"
+stage: ideas
+selection: {type: baseline_two_list, n_stocks: 15, mom_share: 0.70, mom_signal: mom_resid, high_signal: near52_live}
+sector_cap: null
+quality_filter: false
+weighting: equal
+weight_cap: null
+buffer: {enabled: true, exit_rank: 25, max_swaps: 6}

@@ -1,0 +1,10 @@
+# New-ideas round (pre-registered, run once): B with the momentum list = 10 lowest-ID of the top-30 momentum names
+name: idea2_fip
+tag: "idea:2 frog-in-the-pan"
+stage: ideas
+selection: {type: baseline_two_list, n_stocks: 15, mom_share: 0.70, mom_signal: mom_fip, high_signal: near52_live}
+sector_cap: null
+quality_filter: false
+weighting: equal
+weight_cap: null
+buffer: {enabled: true, exit_rank: 25, max_swaps: 6}

@@ -26,10 +26,14 @@ for path in args.configs:
     if ov.get("enabled"):      # Layer 4: pass 1 = unlevered strategy (0 bps) -> exposure schedule -> pass 2 = scaled run
         base_fn = fn
         u, *_ = backtest.run_backtest(ctx.rets, dates, base_fn, ctx.tbill, cost_bps=0)
-        tgt = overlay.target_vol(ctx.bench, ov["target_calib_end"])
-        expo = overlay.exposure_schedule(u, dates, tgt, ov["vol_window"], ov["min_change"])
+        if ov.get("type", "vol_target") == "crash_state":
+            expo, med = overlay.crash_schedule(u, ctx.bench, dates, ov["target_calib_end"], ov["vol_window"], ov.get("bench_days", 504), ov.get("low", 0.5))
+            print(f"[crash-state] strategy 126d-vol median {med:.4f} (through {ov['target_calib_end']}); in 50% state at {(expo < 1).mean():.1%} of rebalances")
+        else:
+            tgt = overlay.target_vol(ctx.bench, ov["target_calib_end"])
+            expo = overlay.exposure_schedule(u, dates, tgt, ov["vol_window"], ov["min_change"])
+            print(f"[L4] sigma_target (benchmark vol through {ov['target_calib_end']}) = {tgt:.4f}")
         fn = lambda d, w: base_fn(d, w) * expo[d]
-        print(f"[L4] sigma_target (benchmark vol through {ov['target_calib_end']}) = {tgt:.4f}")
     for c in args.costs:
         r, sw, to, _ = backtest.run_backtest(ctx.rets, dates, fn, ctx.tbill, cost_bps=c)
         backtest.log_trial(cfg["tag"], {"config": path, "name": cfg["name"]}, metrics.perf(r, ctx.tbill, ctx.bench, sw), c)

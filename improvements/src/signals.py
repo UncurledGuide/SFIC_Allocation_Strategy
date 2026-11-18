@@ -28,6 +28,7 @@ def compute_all(px, cfg):
         "mom180": mom_lookback(px["adj_close"], s["mom_lookback_baseline"]),
         "mom6_1": mom_skip(px["adj_close"], s["mom_6_1"]["start"], s["mom_6_1"]["end"]),
         "near52": nearness_52w(px["adj_close"], px["high"], s["high_window"]),
+        "mom12_1": mom_skip(px["adj_close"], 252, 21),                  # idea 4: classic 12-1 momentum
         "mom_live": mom_skip(px["adj_close"], 200, 20),                 # SFIC live tool: return t-200 -> t-20
         "near52_live": nearness_live(px["adj_close"], s["high_window"]),
     }

@@ -1,0 +1,16 @@
+{
+ "best_idea_by_full_sharpe": "3 Crash-state rule (vs L4)",
+ "DSR_best": 0.8556697441948813,
+ "DSR_B_same_N": 0.8493279931746724,
+ "N_trials": 1765,
+ "distinct_tags": 37,
+ "expected_max_sharpe_null_annual": 0.48725353038617264,
+ "idea1_vs_B_sharpe_2003_2014": {
+  "idea1": 0.5975562956827553,
+  "B": 0.6156620265792428
+ },
+ "idea3_exposure": {
+  "share_of_rebalances_at_50pct": 0.07692307692307693,
+  "mean": 0.9615384615384616
+ }
+}

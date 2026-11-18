@@ -1,0 +1,10 @@
+# New-ideas round (pre-registered, run once): B with 12-1 momentum (t-252..t-21) as the momentum list
+name: idea4_mom12_1
+tag: "idea:4 12-1 momentum"
+stage: ideas
+selection: {type: baseline_two_list, n_stocks: 15, mom_share: 0.70, mom_signal: mom12_1, high_signal: near52_live}
+sector_cap: null
+quality_filter: false
+weighting: equal
+weight_cap: null
+buffer: {enabled: true, exit_rank: 25, max_swaps: 6}

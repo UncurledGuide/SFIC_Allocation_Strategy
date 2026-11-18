@@ -13,7 +13,7 @@ from types import SimpleNamespace
 import copy
 import pandas as pd
 import yaml
-from . import data, signals, portfolio as P
+from . import data, signals, ideas, portfolio as P
 
 
 def deep_update(a, b):
@@ -43,6 +43,8 @@ def build_target_fn(cfg, ctx):
     cap, qf, wt, wcap = cfg.get("sector_cap"), cfg.get("quality_filter", False), cfg.get("weighting", "equal"), cfg.get("weight_cap")
     n, share, mkey = sel["n_stocks"], sel.get("mom_share", 0.7), sel.get("mom_signal", "mom180")
     hkey = sel.get("high_signal", "near52")
+    if mkey in ("mom_resid", "mom_fip") and mkey not in ctx.sig:
+        ctx.sig[mkey] = ideas.build(mkey, ctx)
     ok = ctx.volc if qf else (ctx.vol if wt == "inverse_vol" else None)   # names need a valid 63d vol for L2
     sectors = ctx.sectors if cap else None
     exit_n = buf.get("exit_rank", cfg["trading"]["buffer_exit"]); max_sw = buf.get("max_swaps", cfg["trading"]["max_swaps"])
