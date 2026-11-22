@@ -1,0 +1,14 @@
+# Rebuilt SFIC baseline (comparator), monthly. See logs/STATUS.md for interpretation choices.
+start: "2015-01-01"
+cost_bps: null          # null -> config/costs.yaml base (10 bps/side)
+rounding: fractional
+allocation: null        # null -> primary 1%
+baseline:
+  n_stocks: 15
+  n_mom: 11             # 70% of 15 = 10.5 -> 11 by momentum, 4 by 52w-high proximity
+  mom_days: 126
+  high_days: 252
+  min_high_obs: 240
+  every_n_months: 1
+overlay:
+  enabled: false

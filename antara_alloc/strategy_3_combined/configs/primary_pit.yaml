@@ -1,0 +1,20 @@
+allocation: null
+cost_bps: null
+overlay:
+  c: 0.048673165969339405
+  c_method: mm_vol_match
+  cap: 1.0
+  enabled: true
+  floor: 0.0
+  rv_window_months: 1
+rounding: fractional
+v1:
+  buffer: null
+  every_n_months: 1
+  model: residual_momentum
+  mom_months: 11
+  n_holdings: 15
+  reg_months: 36
+  skip_months: 1
+  standardize: false
+  start: '1999-12-31'

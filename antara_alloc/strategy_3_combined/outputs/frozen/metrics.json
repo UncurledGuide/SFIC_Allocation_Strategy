@@ -1,0 +1,214 @@
+{
+  "split": "validation",
+  "window": [
+    "2015-01-01",
+    "2019-12-31"
+  ],
+  "c": 0.048673165969339405,
+  "primary_10bps": {
+    "sharpe": 0.43493992642190704,
+    "cagr": 0.07123274758462506,
+    "ann_vol": 0.16727813812792722,
+    "max_drawdown": -0.2412193561553273,
+    "sortino": 0.5961816407854212,
+    "avg_exposure": 0.9450371059288376,
+    "avg_one_way_turnover_per_rebalance": 0.4031703017008966,
+    "annual_one_way_turnover": 4.845735263686453,
+    "avg_trades_per_rebalance": 20.75,
+    "cost_drag_total": 0.0483804362041076,
+    "cost_drag_annual": 0.009691470527372905,
+    "gross_minus_net_cagr": 0.010436806051449699,
+    "start": "2015-01-02",
+    "end": "2019-12-31",
+    "n_days": 1258,
+    "calmar": 0.29530278465197657,
+    "hit_rate_monthly": 0.5833333333333334,
+    "benchmark_cagr": 0.090974303436131,
+    "benchmark_sharpe": 0.792821096111157,
+    "hit_rate_vs_benchmark_monthly": 0.5333333333333333,
+    "tracking_error": 0.10330058645742453,
+    "information_ratio": -0.09355421218391517,
+    "factor_loadings": {
+      "alpha_ann": -0.0338847033336542,
+      "alpha_t": -0.8093832056322356,
+      "r2": 0.6807843855513052,
+      "n_obs": 1258,
+      "beta_MKT_RF": 0.9932922806275071,
+      "t_MKT_RF": 32.459849328350664,
+      "beta_SMB": 0.19207565557079237,
+      "t_SMB": 5.052377165032782,
+      "beta_HML": 0.04881630376214149,
+      "t_HML": 1.061729802170729,
+      "beta_MOM": 0.14020810375786955,
+      "t_MOM": 4.683700812288601
+    }
+  },
+  "unmanaged_v1_10bps": {
+    "sharpe": 0.572982877302991,
+    "cagr": 0.10078551938749825,
+    "ann_vol": 0.17759069378212217,
+    "max_drawdown": -0.23683119355701432,
+    "sortino": 0.7943829499089693,
+    "avg_exposure": 1.0,
+    "avg_one_way_turnover_per_rebalance": 0.40476945207154374,
+    "annual_one_way_turnover": 4.864955576567362,
+    "avg_trades_per_rebalance": 20.75,
+    "cost_drag_total": 0.04857233424858525,
+    "cost_drag_annual": 0.009729911153134724,
+    "gross_minus_net_cagr": 0.010767603654326274
+  },
+  "sfic_benchmark": {
+    "sharpe": 0.792821096111157,
+    "cagr": 0.090974303436131,
+    "ann_vol": 0.10395726386371974,
+    "max_drawdown": -0.14810980953053587
+  },
+  "overlay_w_validation": {
+    "mean": 0.9437998861497872,
+    "min": 0.41851656265451315,
+    "share_months_at_cap": 0.8333333333333334
+  },
+  "sharpe_ci_primary": {
+    "sharpe": 0.43493992642190704,
+    "ci_low": -0.34980630687273156,
+    "ci_high": 1.21673721225603,
+    "n_boot": 2000,
+    "block": 21
+  },
+  "sharpe_diff_vs_unmanaged_v1": {
+    "sharpe_diff": -0.13804295088108398,
+    "ci_low": -0.2871596565889078,
+    "ci_high": 0.004115545735998505,
+    "p_le_0": 0.9715,
+    "n_boot": 2000,
+    "block": 21
+  },
+  "sharpe_diff_vs_sfic_benchmark": {
+    "sharpe_diff": -0.35788116968925,
+    "ci_low": -0.9560820093253513,
+    "ci_high": 0.18468602103130596,
+    "p_le_0": 0.9105,
+    "n_boot": 2000,
+    "block": 21
+  },
+  "stats_full_sample_engine": {
+    "n_rebalances": 240,
+    "n_rebalances_with_trades": 240,
+    "avg_trades_per_rebalance": 20.9375,
+    "avg_one_way_turnover_per_rebalance": 0.37013829051669056,
+    "annual_one_way_turnover": 4.448720948022545,
+    "total_cost_drag": 0.17766637944801145,
+    "stale_return_position_days": 0,
+    "n_delist_events": 0,
+    "cost_bps_per_side": 10.0,
+    "rounding": "fractional",
+    "starting_capital_usd": 15407.466100000001,
+    "avg_exposure": 0.8175858508271981,
+    "c": 0.048673165969339405,
+    "signals_without_rv": 1
+  },
+  "cost_sensitivity": {
+    "0bps": {
+      "primary": {
+        "sharpe": 0.4929817261818896,
+        "cagr": 0.08166955363607475,
+        "ann_vol": 0.16724317546082554,
+        "max_drawdown": -0.23920618762926793,
+        "cost_drag_annual": 0.0
+      },
+      "unmanaged_v1": {
+        "sharpe": 0.6278669136763029,
+        "cagr": 0.11155312304182452,
+        "ann_vol": 0.17756914433135107,
+        "max_drawdown": -0.23504194290580982,
+        "cost_drag_annual": 0.0
+      },
+      "sharpe_diff_vs_unmanaged_v1": {
+        "sharpe_diff": -0.1348851874944133,
+        "ci_low": -0.2833303475365061,
+        "ci_high": 0.007673624367317801,
+        "p_le_0": 0.969,
+        "n_boot": 2000,
+        "block": 21
+      }
+    },
+    "5bps": {
+      "primary": {
+        "sharpe": 0.4639743479116979,
+        "cagr": 0.07643962531815807,
+        "ann_vol": 0.1672546918989912,
+        "max_drawdown": -0.24021326350761119,
+        "cost_drag_annual": 0.004845735263686452
+      },
+      "unmanaged_v1": {
+        "sharpe": 0.6004428719570858,
+        "cagr": 0.10615740969696041,
+        "ann_vol": 0.17757411443224902,
+        "max_drawdown": -0.23593695070061427,
+        "cost_drag_annual": 0.004864955576567362
+      },
+      "sharpe_diff_vs_unmanaged_v1": {
+        "sharpe_diff": -0.1364685240453879,
+        "ci_low": -0.28524849214842507,
+        "ci_high": 0.005699160041534425,
+        "p_le_0": 0.97,
+        "n_boot": 2000,
+        "block": 21
+      }
+    },
+    "10bps": {
+      "primary": {
+        "sharpe": 0.43493992642190704,
+        "cagr": 0.07123274758462506,
+        "ann_vol": 0.16727813812792722,
+        "max_drawdown": -0.2412193561553273,
+        "cost_drag_annual": 0.009691470527372905
+      },
+      "unmanaged_v1": {
+        "sharpe": 0.572982877302991,
+        "cagr": 0.10078551938749825,
+        "ann_vol": 0.17759069378212217,
+        "max_drawdown": -0.23683119355701432,
+        "cost_drag_annual": 0.009729911153134724
+      },
+      "sharpe_diff_vs_unmanaged_v1": {
+        "sharpe_diff": -0.13804295088108398,
+        "ci_low": -0.2871596565889078,
+        "ci_high": 0.004115545735998505,
+        "p_le_0": 0.9715,
+        "n_boot": 2000,
+        "block": 21
+      }
+    },
+    "25bps": {
+      "primary": {
+        "sharpe": 0.34773676905065365,
+        "cagr": 0.0557495012974627,
+        "ann_vol": 0.1674199926872081,
+        "max_drawdown": -0.24423174099448253,
+        "cost_drag_annual": 0.02422867631843226
+      },
+      "unmanaged_v1": {
+        "sharpe": 0.49044128209127624,
+        "cagr": 0.08481183982913376,
+        "ann_vol": 0.1777100434573181,
+        "max_drawdown": -0.239509336757041,
+        "cost_drag_annual": 0.02432477788283681
+      },
+      "sharpe_diff_vs_unmanaged_v1": {
+        "sharpe_diff": -0.1427045130406226,
+        "ci_low": -0.2928567291609522,
+        "ci_high": -0.002138874642194938,
+        "p_le_0": 0.9765,
+        "n_boot": 2000,
+        "block": 21
+      }
+    }
+  },
+  "variants_tried": 1,
+  "design_variants": 1,
+  "universe": "point-in-time S&P 500 membership (loader.universe corrected 2026-11-17)",
+  "c_old_universe": 0.06074283701403243,
+  "survivorship_caveat": "Universe is point-in-time S&P 500 membership; the changes table is sparse before ~2008, so 2000-2007 membership is still partly survivor-based.",
+  "validation_run_id": "20261117-103349-primary_pit-922c5ab5"
+}

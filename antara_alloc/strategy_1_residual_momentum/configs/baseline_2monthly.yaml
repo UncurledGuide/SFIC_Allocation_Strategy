@@ -1,0 +1,8 @@
+# Comparison: SFIC baseline (11 names by 6-month momentum + 4 by 52-week-high proximity), EW, every 2 months
+model: baseline_70_30
+start: "1999-12-31"
+n_holdings: 15
+every_n_months: 2
+n_mom: 11
+mom_days: 126
+high_days: 252

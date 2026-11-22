@@ -1,0 +1,18 @@
+allocation: null
+baseline:
+  every_n_months: 1
+  high_days: 252
+  min_high_obs: 240
+  mom_days: 126
+  n_mom: 11
+  n_stocks: 15
+cost_bps: null
+overlay:
+  c: 0.047445238397869696
+  c_method: mm_vol_match
+  cap: 1.0
+  enabled: true
+  floor: 0.0
+  rv_window_months: 1
+rounding: fractional
+start: '2015-01-01'

@@ -1,0 +1,19 @@
+{
+  "win1_mm_vol_match_pit": {
+    "c": 0.03709987979863933,
+    "avg_exposure_fit": 0.7289077405221279,
+    "share_months_capped": 0.38333333333333336,
+    "share_below_0.25": 0.07777777777777778,
+    "rv_median": 0.04538140395899862,
+    "rv_mean": 0.06924781926151077
+  },
+  "old_c_old_universe": 0.047445238397869696,
+  "c_ratio_new_over_old": 0.7819515941204571,
+  "baseline_fit_metrics_pit": {
+    "sharpe": 0.6710288935984371,
+    "cagr": 0.17555498943454162,
+    "ann_vol": 0.26752348154388556,
+    "max_drawdown": -0.6137255011051608,
+    "annual_one_way_turnover": 6.53723882447014
+  }
+}

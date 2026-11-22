@@ -1,0 +1,187 @@
+{
+  "validation": {
+    "primary_pit": {
+      "start": "2015-01-02",
+      "end": "2019-12-31",
+      "n_days": 1258,
+      "cagr": 0.048309884142726967,
+      "ann_vol": 0.16002456432543985,
+      "sharpe": 0.3121742530307925,
+      "sortino": 0.41701203519203134,
+      "max_drawdown": -0.21302036692317206,
+      "calmar": 0.22678528274317739,
+      "hit_rate_monthly": 0.6166666666666667,
+      "benchmark_cagr": 0.090974303436131,
+      "benchmark_sharpe": 0.792821096111157,
+      "hit_rate_vs_benchmark_monthly": 0.5,
+      "tracking_error": 0.10449635060391928,
+      "information_ratio": -0.31065579886701855,
+      "avg_one_way_turnover_per_rebalance": 0.5381780677426459,
+      "annual_one_way_turnover": 6.468404121040388,
+      "factor_loadings": {
+        "alpha_ann": -0.05630140154832116,
+        "alpha_t": -1.4732717534018729,
+        "r2": 0.6861332174756354,
+        "n_obs": 1258,
+        "beta_MKT_RF": 0.9224855901759645,
+        "t_MKT_RF": 26.443112455147805,
+        "beta_SMB": 0.21608080388232703,
+        "t_SMB": 4.874864026106759,
+        "beta_HML": 0.023266963687680955,
+        "t_HML": 0.5071939588138676,
+        "beta_MOM": 0.3721649114489718,
+        "t_MOM": 11.207157816275583
+      },
+      "avg_exposure": 0.9238622965648272,
+      "total_cost_drag": 0.06458136812911751,
+      "avg_trades_per_rebalance": 23.216666666666665,
+      "n_rebalances": 60,
+      "stale_return_position_days": 0,
+      "n_delist_events": 0,
+      "cost_bps_per_side": 10.0,
+      "rounding": "fractional",
+      "starting_capital_usd": 15407.466100000001
+    },
+    "baseline_monthly_pit": {
+      "start": "2015-01-02",
+      "end": "2019-12-31",
+      "n_days": 1258,
+      "cagr": 0.06864499377420685,
+      "ann_vol": 0.1727435915229023,
+      "sharpe": 0.41269992631643804,
+      "sortino": 0.5568495527169186,
+      "max_drawdown": -0.1976850176104935,
+      "calmar": 0.34724429096321685,
+      "hit_rate_monthly": 0.6,
+      "benchmark_cagr": 0.090974303436131,
+      "benchmark_sharpe": 0.792821096111157,
+      "hit_rate_vs_benchmark_monthly": 0.5166666666666667,
+      "tracking_error": 0.10984605346481256,
+      "information_ratio": -0.1012937040175442,
+      "avg_one_way_turnover_per_rebalance": 0.5615068599409506,
+      "annual_one_way_turnover": 6.748794691818104,
+      "factor_loadings": {
+        "alpha_ann": -0.050312223428914025,
+        "alpha_t": -1.3474151964692938,
+        "r2": 0.7408888342999083,
+        "n_obs": 1258,
+        "beta_MKT_RF": 1.0368034737983793,
+        "t_MKT_RF": 45.41228689257895,
+        "beta_SMB": 0.19100899460218207,
+        "t_SMB": 4.593863967088303,
+        "beta_HML": -0.009489806015144597,
+        "t_HML": -0.22054119836450925,
+        "beta_MOM": 0.40854926169280353,
+        "t_MOM": 13.261507921567878
+      },
+      "avg_exposure": 1.0,
+      "total_cost_drag": 0.06738082319291408,
+      "avg_trades_per_rebalance": 23.216666666666665,
+      "n_rebalances": 60,
+      "stale_return_position_days": 0,
+      "n_delist_events": 0,
+      "cost_bps_per_side": 10.0,
+      "rounding": "fractional",
+      "starting_capital_usd": 15407.466100000001
+    }
+  },
+  "sfic_benchmark": {
+    "sharpe": 0.792821096111157,
+    "sortino": 1.0958876402901927,
+    "cagr": 0.090974303436131,
+    "ann_vol": 0.10395726386371974,
+    "max_drawdown": -0.14810980953053587,
+    "factor_loadings": {
+      "alpha_ann": -0.001755926734955667,
+      "alpha_t": -0.26302808688293805,
+      "r2": 0.9770751623348065,
+      "n_obs": 1258,
+      "beta_MKT_RF": 0.752091856725951,
+      "t_MKT_RF": 118.51656557438932,
+      "beta_SMB": -0.10603070663139012,
+      "t_SMB": -13.14012542326818,
+      "beta_HML": -0.01693901538762935,
+      "t_HML": -2.5328821226222145,
+      "beta_MOM": -0.013612839589447666,
+      "t_MOM": -3.0571662552708885
+    }
+  },
+  "bootstrap": {
+    "primary_pit_minus_baseline_monthly_pit": {
+      "sharpe_diff": -0.10052567328564554,
+      "ci_low": -0.23325715354729568,
+      "ci_high": 0.03334973120096031,
+      "p_le_0": 0.9315,
+      "n_boot": 2000,
+      "block": 21
+    },
+    "primary_pit_minus_SFIC_BENCH": {
+      "sharpe_diff": -0.4806468430803645,
+      "ci_low": -1.0454985027752601,
+      "ci_high": 0.018185914009974373,
+      "p_le_0": 0.9665,
+      "n_boot": 2000,
+      "block": 21
+    },
+    "primary_pit_sharpe_ci": {
+      "sharpe": 0.3121742530307925,
+      "ci_low": -0.4285024945479946,
+      "ci_high": 1.0534476564297572,
+      "n_boot": 2000,
+      "block": 21
+    },
+    "baseline_monthly_pit_minus_SFIC_BENCH": {
+      "sharpe_diff": -0.38012116979471894,
+      "ci_low": -0.935047746337609,
+      "ci_high": 0.12511161643150082,
+      "p_le_0": 0.933,
+      "n_boot": 2000,
+      "block": 21
+    },
+    "baseline_monthly_pit_sharpe_ci": {
+      "sharpe": 0.41269992631643804,
+      "ci_low": -0.2958170978107873,
+      "ci_high": 1.1369973874256,
+      "n_boot": 2000,
+      "block": 21
+    }
+  },
+  "sensitivity": {
+    "primary_pit_cost0": {
+      "sharpe": 0.39315115205969803,
+      "cagr": 0.06196749507928634,
+      "max_drawdown": -0.21099865081213542,
+      "total_cost_drag": 0.0
+    },
+    "primary_pit_cost5": {
+      "sharpe": 0.3526792950354192,
+      "cagr": 0.055118510924304864,
+      "max_drawdown": -0.21200991400100444,
+      "total_cost_drag": 0.032290684064558754
+    },
+    "primary_pit_cost25": {
+      "sharpe": 0.19062497091410674,
+      "cagr": 0.02812399856061787,
+      "max_drawdown": -0.2160468669752702,
+      "total_cost_drag": 0.16145342032279378
+    },
+    "baseline_monthly_pit_cost0": {
+      "sharpe": 0.49099269081630553,
+      "cagr": 0.08317543703792118,
+      "max_drawdown": -0.19538127975126007,
+      "total_cost_drag": 0.0
+    },
+    "baseline_monthly_pit_cost5": {
+      "sharpe": 0.45186863982624553,
+      "cagr": 0.07588780371495618,
+      "max_drawdown": -0.19653365697456648,
+      "total_cost_drag": 0.03369041159645704
+    },
+    "baseline_monthly_pit_cost25": {
+      "sharpe": 0.29507420662092576,
+      "cagr": 0.04718301113598211,
+      "max_drawdown": -0.20113300382499444,
+      "total_cost_drag": 0.16845205798228524
+    }
+  }
+}

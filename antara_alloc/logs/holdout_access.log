@@ -1,0 +1,13 @@
+2026-11-17T10:20:16	antara	RUN	strategy_1_residual_momentum	FIRST	code_hash=a9e6d563c934ee3d	config_hash=ee492c06d51d28be	variants_tried=5	reason=''
+2026-11-17T10:20:19	antara	DONE	strategy_1_residual_momentum	FIRST	outputs=strategy_1_residual_momentum/outputs/holdout/20261117-102018
+2026-11-17T10:20:25	antara	RUN	strategy_2_vol_managed	FIRST	code_hash=7d7c7a14a2b4035a	config_hash=6d8ea73ca189737a	variants_tried=16	reason=''
+2026-11-17T10:20:28	antara	DONE	strategy_2_vol_managed	FIRST	outputs=strategy_2_vol_managed/outputs/holdout/20261117-102027
+2026-11-17T10:24:00	antara	RUN	strategy_3_combined	FIRST	code_hash=7b10727c14ee4d85	config_hash=77f0690ac911175a	variants_tried=1	reason=''
+2026-11-17T10:24:04	antara	DONE	strategy_3_combined	FIRST	outputs=strategy_3_combined/outputs/holdout/20261117-102403
+2026-11-17T10:33:28	antara	RUN	strategy_1_residual_momentum	RE-LOOK	code_hash=30d9a5abd72c6221	config_hash=ee492c06d51d28be	variants_tried=8	reason='data correction: universe now point-in-time S&P 500 membership (old pool had look-ahead); design unchanged'
+2026-11-17T10:33:32	antara	DONE	strategy_1_residual_momentum	RE-LOOK	outputs=strategy_1_residual_momentum/outputs/holdout/20261117-103331
+2026-11-17T10:33:41	antara	RUN	strategy_2_vol_managed	RE-LOOK	code_hash=8482b53a92e8d12b	config_hash=595367250a88a7a1	variants_tried=24	reason='data correction: universe now point-in-time S&P 500 membership (old pool had look-ahead); design unchanged'
+2026-11-17T10:33:44	antara	DONE	strategy_2_vol_managed	RE-LOOK	outputs=strategy_2_vol_managed/outputs/holdout/20261117-103343
+2026-11-17T10:42:56	antara	RUN	strategy_3_combined	RE-LOOK	code_hash=922c5ab59e5ea5d6	config_hash=a7a1743c7004107a	variants_tried=3	reason='data correction: universe now point-in-time S&P 500 membership (old pool had look-ahead); design unchanged'
+2026-11-17T10:43:00	antara	DONE	strategy_3_combined	RE-LOOK	outputs=strategy_3_combined/outputs/holdout/20261117-104259
+2026-11-17T22:22:34	antara	COPY	test_holdout copied into handout/ for the team handoff; project copy re-locked

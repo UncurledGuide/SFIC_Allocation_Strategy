@@ -1,0 +1,10 @@
+price_start: "1997-01-01"
+benchmarks: {SPY: null, EFA: VGTSX, AGG: VBMFX}   # ETF: pre-inception proxy
+sfic_benchmark_weights: {SPY: 0.65, EFA: 0.15, AGG: 0.20}
+sfic_benchmark_rebalance: monthly
+french_base_url: "http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/"   # https returns 404 as of setup
+french_files:
+  ff3_monthly_daily: [F-F_Research_Data_Factors_CSV.zip, F-F_Research_Data_Factors_daily_CSV.zip]
+  mom_monthly_daily: [F-F_Momentum_Factor_CSV.zip, F-F_Momentum_Factor_daily_CSV.zip]
+wikipedia_url: "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+wikipedia_changes_url: "https://en.wikipedia.org/wiki/Historical_components_of_the_S%26P_500"   # changes table moved here from the main list page

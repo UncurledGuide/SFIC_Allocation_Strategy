@@ -1,0 +1,9 @@
+buffer: null
+every_n_months: 1
+model: residual_momentum
+mom_months: 11
+n_holdings: 15
+reg_months: 36
+skip_months: 1
+standardize: false
+start: '1999-12-31'

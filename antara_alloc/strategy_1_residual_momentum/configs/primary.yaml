@@ -1,0 +1,10 @@
+# Primary (pre-registered): Blitz-Huij-Martens residual momentum
+model: residual_momentum
+start: "1999-12-31"
+n_holdings: 15
+every_n_months: 1
+reg_months: 36
+mom_months: 11
+skip_months: 1
+standardize: true
+buffer: null

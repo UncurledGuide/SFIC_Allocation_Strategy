@@ -1,0 +1,138 @@
+{
+  "start": "2015-01-02",
+  "end": "2019-12-31",
+  "n_days": 1258,
+  "cagr": 0.10078551938749825,
+  "ann_vol": 0.17759069378212217,
+  "sharpe": 0.572982877302991,
+  "sortino": 0.7943829499089693,
+  "max_drawdown": -0.23683119355701432,
+  "calmar": 0.42555846581601303,
+  "hit_rate_monthly": 0.5833333333333334,
+  "benchmark_cagr": 0.090974303436131,
+  "benchmark_sharpe": 0.792821096111157,
+  "hit_rate_vs_benchmark_monthly": 0.5833333333333334,
+  "tracking_error": 0.10793905000333351,
+  "information_ratio": 0.17913893549163495,
+  "avg_one_way_turnover_per_rebalance": 0.40476945207154374,
+  "annual_one_way_turnover": 4.864955576567362,
+  "factor_loadings": {
+    "alpha_ann": -0.015648624099314168,
+    "alpha_t": -0.3726750830616581,
+    "r2": 0.7157417049039885,
+    "n_obs": 1258,
+    "beta_MKT_RF": 1.0823449866184758,
+    "t_MKT_RF": 47.99123691369989,
+    "beta_SMB": 0.1732717473904404,
+    "t_SMB": 4.680440622672469,
+    "beta_HML": 0.013389680087785193,
+    "t_HML": 0.2869108257244617,
+    "beta_MOM": 0.11313794696332717,
+    "t_MOM": 3.7331825111293795
+  },
+  "gross_sharpe": 0.6278669136763038,
+  "cost_drag_window": 0.04857233424858525,
+  "sharpe_ci": {
+    "sharpe": 0.572982877302991,
+    "ci_low": -0.1827950203095372,
+    "ci_high": 1.3701535742161897,
+    "n_boot": 1000,
+    "block": 21
+  },
+  "sharpe_diff_vs_sfic_bench": {
+    "sharpe_diff": -0.219838218808166,
+    "ci_low": -0.784746773807943,
+    "ci_high": 0.2618672227720455,
+    "p_le_0": 0.804,
+    "n_boot": 1000,
+    "block": 21
+  },
+  "fit_window": {
+    "start": "2000-01-03",
+    "end": "2014-12-31",
+    "n_days": 3773,
+    "cagr": 0.19013568218296428,
+    "ann_vol": 0.29760718784537843,
+    "sharpe": 0.6731498818188731,
+    "sortino": 0.9688294012140034,
+    "max_drawdown": -0.6529423130131391,
+    "calmar": 0.29119828565795247,
+    "hit_rate_monthly": 0.5888888888888889,
+    "benchmark_cagr": 0.044152517237622035,
+    "benchmark_sharpe": 0.23632563802620388,
+    "hit_rate_vs_benchmark_monthly": 0.5944444444444444,
+    "tracking_error": 0.1862639192696803,
+    "information_ratio": 0.871863783037995,
+    "avg_one_way_turnover_per_rebalance": 0.4302388623853595,
+    "annual_one_way_turnover": 5.172444950384285,
+    "gross_sharpe": 0.7079709336183663,
+    "cost_drag_window": 0.15488599045872942
+  },
+  "engine_stats": {
+    "n_rebalances": 240,
+    "n_rebalances_with_trades": 240,
+    "avg_trades_per_rebalance": 20.9375,
+    "avg_one_way_turnover_per_rebalance": 0.4238715098069055,
+    "annual_one_way_turnover": 5.094544696566305,
+    "total_cost_drag": 0.20345832470731465,
+    "stale_return_position_days": 0,
+    "n_delist_events": 0,
+    "cost_bps_per_side": 10.0,
+    "rounding": "fractional",
+    "starting_capital_usd": 15407.466100000001,
+    "avg_exposure": 0.9998012718600954,
+    "min_names_scored": 273,
+    "signals_with_factor_lag": 0
+  },
+  "caveat": "Survivorship caveat: candidate pool over-represents firms that survived to today (only ~413 names priced in 2000); absolute returns are biased upward, mostly early years.",
+  "sensitivity": {
+    "cost_0bps": {
+      "sharpe": 0.6279,
+      "cagr": 0.1116,
+      "max_drawdown": -0.235,
+      "cost_drag": 0.0,
+      "avg_exposure": 1.0,
+      "avg_trades_per_rebalance": 20.94
+    },
+    "cost_5bps": {
+      "sharpe": 0.6004,
+      "cagr": 0.1062,
+      "max_drawdown": -0.2359,
+      "cost_drag": 0.0243,
+      "avg_exposure": 1.0,
+      "avg_trades_per_rebalance": 20.94
+    },
+    "cost_10bps": {
+      "sharpe": 0.573,
+      "cagr": 0.1008,
+      "max_drawdown": -0.2368,
+      "cost_drag": 0.0486,
+      "avg_exposure": 1.0,
+      "avg_trades_per_rebalance": 20.94
+    },
+    "cost_25bps": {
+      "sharpe": 0.4904,
+      "cagr": 0.0848,
+      "max_drawdown": -0.2395,
+      "cost_drag": 0.1214,
+      "avg_exposure": 1.0,
+      "avg_trades_per_rebalance": 20.94
+    },
+    "whole_share_alloc_0.01": {
+      "sharpe": 0.5736,
+      "cagr": 0.1007,
+      "max_drawdown": -0.236,
+      "cost_drag": 0.0485,
+      "avg_exposure": 0.9975,
+      "avg_trades_per_rebalance": 20.94
+    },
+    "whole_share_alloc_0.05": {
+      "sharpe": 0.5732,
+      "cagr": 0.1008,
+      "max_drawdown": -0.2367,
+      "cost_drag": 0.0485,
+      "avg_exposure": 0.9995,
+      "avg_trades_per_rebalance": 20.94
+    }
+  }
+}

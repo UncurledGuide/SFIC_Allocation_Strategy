@@ -1,0 +1,7 @@
+overlay:
+  c: RE-ESTIMATE on unmanaged V1 fit-period (2000-2014) returns with overlay.estimate_c(method=c_method)
+  c_method: mm_vol_match
+  cap: 1.0
+  enabled: true
+  floor: 0.0
+  rv_window_months: 1

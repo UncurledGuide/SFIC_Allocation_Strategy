@@ -1,0 +1,6 @@
+# Single source of truth for time splits. Time-based only; no random splits.
+warmup:     {start: "1997-01-01", end: "1999-12-31"}   # lookback history only, never scored
+fit:        {start: "2000-01-01", end: "2014-12-31"}
+validation: {start: "2015-01-01", end: "2019-12-31"}
+training_max_date: "2019-12-31"   # TrainingLoader hard ceiling (warmup + fit + validation)
+holdout:    {start: "2020-01-01", end: null}            # LOCKED; only common/run_holdout.py may read it

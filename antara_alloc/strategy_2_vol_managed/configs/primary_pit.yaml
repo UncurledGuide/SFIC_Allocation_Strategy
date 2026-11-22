@@ -1,0 +1,20 @@
+# Strategy 2 PRIMARY, re-estimated on the point-in-time universe (data correction). Design unchanged;
+# only c re-estimated with the frozen rule (mm_vol_match, fit 2000-2014). Old c 0.047445238397869696 (configs/primary.yaml).
+start: "2015-01-01"     # scoring start for TrainingLoader runs; holdout uses loader.perf_start
+cost_bps: null          # null -> config/costs.yaml base (10 bps/side)
+rounding: fractional
+allocation: null        # null -> primary 1%
+baseline:
+  n_stocks: 15
+  n_mom: 11
+  mom_days: 126
+  high_days: 252
+  min_high_obs: 240
+  every_n_months: 1
+overlay:
+  enabled: true
+  rv_window_months: 1
+  c_method: mm_vol_match          # documentation only; c below was estimated on fit 2000-2014
+  c: 0.03709987979863933
+  cap: 1.0
+  floor: 0.0

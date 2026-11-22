@@ -1,0 +1,12 @@
+# Transaction-cost and sizing assumptions (single source of truth).
+cost_bps_per_side: 10            # base case, applied to traded notional on each buy and each sell
+cost_bps_sensitivity: [0, 5, 10, 25]
+portfolio_value_usd: 1540746.61  # SFIC total from docs/reference/positions_10_19.csv (as of 2025-10-19)
+allocation_primary: 0.01         # 1% -> ~$15.4K (Project Doc)
+allocation_sensitivity: [0.05]   # 5% -> ~$77K (Allocation Pitch)
+rounding_modes: [fractional, whole_share]
+default_rounding: fractional
+execution:
+  signal_time: month_end_close   # signal uses data through close of last trading day of month t
+  trade_time: next_trading_day   # trades fill at next trading day's close (adj), returns accrue from then
+cash_return: french_rf_daily     # uninvested cash earns Fama-French daily RF

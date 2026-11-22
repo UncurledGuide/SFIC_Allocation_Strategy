@@ -1,0 +1,9 @@
+# Point-in-time universe rule.
+pool: sp500_current_plus_wikipedia_changes   # candidate pool, see logs/data_log.md
+membership_file: data/membership/sp500_membership.csv  # only stocks that were S&P 500 members on asof are eligible
+size: 500
+rank_by: trailing_avg_dollar_volume          # raw Close * Volume
+lookback_days: 63
+min_obs_in_lookback: 50                      # require >= 50 valid days in the 63-day window
+require_price_on_asof: true                  # must have an Adj Close on/just before asof
+exclude: [SPY, EFA, AGG, VGTSX, VBMFX]       # benchmarks/proxies are never in the stock universe
