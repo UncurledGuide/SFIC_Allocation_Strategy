@@ -83,17 +83,6 @@ python -m pytest -q
 
 Without the data folders, the tests that need data are skipped. A fresh download runs up to the download date, so numbers can differ slightly from the committed results. Commands for running each strategy, freezing and the holdout are in `docs/HANDOFF.md`.
 
-## Relationship to `improvements/`
-
-`improvements/` in this repository is a separate rebuild of the SFIC model with additional layers. The two folders were developed independently and differ in several choices, so their numbers are not directly comparable:
-
-| | `improvements/` | `antara_alloc/` |
-| --- | --- | --- |
-| Universe | Point-in-time dollar-volume screen over a pool of current and former S&P 500 and S&P 400 tickers | Top 500 by dollar volume among point-in-time S&P 500 members |
-| Baseline rebuild | 10 stocks by 180-day return and 5 by 52-week-high nearness | 11 stocks by 126-trading-day momentum and 4 by 52-week-high nearness |
-| Periods | In-sample 2002–2014, out-of-sample 2015 onward | Fit 2000–2014, validation 2015–2019, holdout 2020 to November 2026 |
-| Default costs | 0 basis points | 10 basis points per side |
-
 ## Caveats
 
 - Yahoo Finance has no data for 226 of the 382 removed S&P 500 members, so some survivorship bias remains, mostly before 2010.
